@@ -76,7 +76,6 @@ export default function BachPhapPage() {
   const spinsLeft = profile?.wheel_spins ?? 0;
   const totalSpins = profile?.wheel_total_spins ?? 0;
   const specialClaimed = profile?.wheel_special_claimed ?? false;
-  const spinsToSpecial = Math.max(0, 26 - totalSpins);
 
   const refreshWheelProfile = useCallback(async () => {
     await refreshProfile();
@@ -140,32 +139,9 @@ export default function BachPhapPage() {
       {/* Stats overview */}
       <StatGrid cols={3} className="mb-6">
         <StatCard label="Lượt Quay Còn Lại" value={spinsLeft} icon={Dices} accent={spinsLeft > 0 ? 'gold' : 'neutral'} hint={spinsLeft > 0 ? 'Sẵn sàng' : 'Hết lượt'} />
-        <StatCard label="Quà Đặc Biệt" value={specialClaimed ? 'Đã nhận' : `${spinsToSpecial} lượt nữa`} icon={Gift} accent="vermilion" hint={specialClaimed ? 'Một lần / tài khoản' : 'Quay đủ 26 lượt'} />
+        <StatCard label="Quà Đặc Biệt" value={specialClaimed ? 'Đã nhận' : 'Chưa nhận'} icon={Gift} accent="vermilion" hint="Một lần / tài khoản" />
         <StatCard label="Tổng Ô Phần Thưởng" value={wheelSegments.length} icon={Coins} accent="gold" />
       </StatGrid>
-
-      {profile && !specialClaimed && (
-        <div className="mb-6 rounded-2xl border border-[#670201]/30 bg-gradient-to-br from-[#1a0a08]/80 to-[#0d0606]/80 p-5 sm:p-6">
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <div className="flex items-center gap-2">
-              <Gift className="h-4 w-4 text-rose-400" />
-              <span className="text-sm font-serif font-bold text-amber-100/90">Tiến độ Quà Đặc Biệt</span>
-            </div>
-            <span className="text-sm font-bold text-amber-200 tabular-nums">{Math.min(totalSpins, 26)} / 26</span>
-          </div>
-          <div className="h-2.5 w-full overflow-hidden rounded-full bg-black/40 border border-white/5">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-[#670201] to-[#b52b24] transition-all duration-500"
-              style={{ width: `${Math.min((totalSpins / 26) * 100, 100)}%` }}
-            />
-          </div>
-          <p className="mt-2 text-xs text-gray-500">
-            {spinsToSpecial > 0
-              ? `Quay thêm ${spinsToSpecial} lượt nữa để nhận quà đặc biệt.`
-              : 'Lượt tiếp theo sẽ trúng quà đặc biệt!'}
-          </p>
-        </div>
-      )}
 
       <section className="relative overflow-hidden rounded-3xl border border-[#670201]/30 bg-gradient-to-br from-[#160807] via-[#0b0505] to-[#080405] px-4 py-8 shadow-[0_24px_100px_rgba(0,0,0,0.45)] sm:px-10 sm:py-10">
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#670201]/8 blur-3xl" />
@@ -175,6 +151,14 @@ export default function BachPhapPage() {
             <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 sm:text-xs">Lượt quay còn lại</span>
             <span className="font-serif text-lg font-bold text-amber-100 sm:text-xl">{spinsLeft}</span>
           </div>
+
+          {profile && (
+            <div className="flex items-center gap-3 rounded-full border border-amber-300/20 bg-gradient-to-r from-black/40 to-[#1a0807]/40 px-5 py-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm sm:px-6 sm:py-3">
+              <Dices className="h-4 w-4 text-amber-300/80 sm:h-5 sm:w-5" />
+              <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 sm:text-xs">Tổng lượt đã quay</span>
+              <span className="font-serif text-lg font-bold text-amber-100 sm:text-xl">{totalSpins}</span>
+            </div>
+          )}
 
           <div className="relative aspect-square w-[min(72vw,340px)] sm:w-[min(46vh,400px)]">
             {/* Outer subtle blood-moon halo */}
