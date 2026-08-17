@@ -50,6 +50,7 @@ export interface Profile {
   created_at: string;
   wheel_spins: number;
   wheel_special_claimed: boolean;
+  wheel_total_spins: number;
   status_physical: string;
   status_spiritual: string;
   status_mental: string;
