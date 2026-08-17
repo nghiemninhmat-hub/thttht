@@ -1,0 +1,345 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --ink-950: #0d0807;
+  --ink-900: #170b09;
+  --ink-800: #24100c;
+  --lacquer-700: #5c160f;
+  --lacquer-600: #8f2418;
+  --vermilion-500: #b73720;
+  --gold-400: #eeb337;
+  --gold-300: #f6ca62;
+  --paper-100: #fff1cf;
+  --paper-200: #f3dca8;
+}
+
+@layer base {
+  html {
+    background: var(--ink-950);
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+    background:
+      radial-gradient(circle at 50% -10%, rgba(183, 55, 32, 0.16), transparent 34rem),
+      linear-gradient(135deg, var(--ink-950), var(--ink-900) 48%, #100706);
+    color: var(--paper-100);
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', 'Chonburi', serif;
+    font-weight: 700;
+  }
+
+  .font-hero {
+    font-family: 'Playfair Display', 'Chonburi', serif;
+    font-weight: 700;
+  }
+
+  .font-serif {
+    font-family: 'Playfair Display', 'Chonburi', serif;
+  }
+
+  .font-script {
+    font-family: 'Chonburi', 'Playfair Display', serif;
+  }
+
+  .font-signature {
+    font-family: 'Chonburi', 'Playfair Display', serif;
+  }
+
+  .font-brush {
+    font-family: 'Chonburi', 'Playfair Display', serif;
+  }
+
+  .font-han {
+    font-family: 'Noto Serif SC', 'STKaiti', 'KaiTi', 'Songti SC', 'SimSun', serif;
+  }
+
+  ::selection {
+    color: var(--ink-950);
+    background: var(--gold-400);
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out;
+  }
+}
+
+/* Map every legacy accent into the vermilion-and-gold palette. */
+[class~="text-cyan-200"],
+[class~="text-cyan-300"],
+[class~="text-cyan-300/70"],
+[class~="text-cyan-300/80"],
+[class~="text-cyan-400"],
+[class~="text-blue-200"],
+[class~="text-blue-300/80"],
+[class~="text-emerald-200"],
+[class~="text-emerald-300"],
+[class~="text-emerald-300/60"],
+[class~="text-emerald-300/70"],
+[class~="text-emerald-400"] {
+  color: rgb(246 202 98 / var(--tw-text-opacity, 1));
+}
+
+[class~="text-purple-300"],
+[class~="text-purple-400"],
+[class~="text-rose-200"],
+[class~="text-rose-300"],
+[class~="text-rose-300/70"],
+[class~="text-rose-400"],
+[class~="text-rose-400/90"] {
+  color: rgb(215 112 66 / var(--tw-text-opacity, 1));
+}
+
+[class~="bg-cyan-300/10"],
+[class~="bg-cyan-500/10"],
+[class~="bg-blue-300/10"],
+[class~="bg-emerald-300/10"],
+[class~="bg-emerald-400/5"],
+[class~="bg-emerald-400/10"],
+[class~="bg-emerald-500/10"],
+[class~="bg-emerald-500/20"],
+[class~="bg-emerald-600/30"],
+[class~="bg-emerald-600/50"],
+[class~="bg-rose-300/15"],
+[class~="bg-rose-500/10"],
+[class~="bg-slate-300/10"] {
+  background-color: rgb(143 36 24 / 0.14);
+}
+
+[class~="border-cyan-300/40"],
+[class~="border-cyan-500/50"],
+[class~="border-cyan-800/30"],
+[class~="border-blue-300/40"],
+[class~="border-emerald-300/40"],
+[class~="border-emerald-400/20"],
+[class~="border-emerald-400/25"],
+[class~="border-emerald-500/20"],
+[class~="border-emerald-500/50"],
+[class~="border-emerald-800/30"],
+[class~="border-rose-300/50"],
+[class~="border-rose-500/20"],
+[class~="border-rose-500/50"],
+[class~="border-rose-800/30"],
+[class~="border-slate-300/40"],
+[class~="border-slate-700/30"] {
+  border-color: rgb(183 55 32 / 0.3);
+}
+
+[class~="from-cyan-900/20"],
+[class~="from-emerald-900/20"],
+[class~="from-rose-900/20"],
+[class~="from-slate-800/20"] {
+  --tw-gradient-from: rgb(92 22 15 / 0.24) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(92 22 15 / 0) var(--tw-gradient-to-position);
+}
+
+[class~="to-cyan-950/10"],
+[class~="to-emerald-950/10"],
+[class~="to-rose-950/10"],
+[class~="to-slate-950/10"] {
+  --tw-gradient-to: rgb(13 8 7 / 0.2) var(--tw-gradient-to-position);
+}
+
+/* Normalize the old lacquer-red tokens to the new vermilion scale. */
+[class~="bg-[#670201]/20"],
+[class~="bg-[#670201]/30"] {
+  background-color: rgb(143 36 24 / 0.22);
+}
+[class~="bg-[#670201]"] {
+  background-color: #8f2418;
+}
+[class~="bg-[#670201]/10"],
+[class~="bg-[#670201]/15"],
+[class~="bg-[#670201]/[0.06]"] {
+  background-color: rgb(143 36 24 / 0.12);
+}
+[class~="bg-[#a00404]"] {
+  background-color: #b73720;
+}
+[class~="border-[#670201]/15"],
+[class~="border-[#670201]/20"],
+[class~="border-[#670201]/25"],
+[class~="border-[#670201]/30"],
+[class~="border-[#670201]/40"],
+[class~="border-[#670201]/50"],
+[class~="border-[#670201]/60"] {
+  border-color: rgb(183 55 32 / 0.3);
+}
+[class~="border-t-[#670201]"],
+[class~="border-l-[#670201]/60"],
+[class~="border-r-[#670201]/60"] {
+  border-color: rgb(238 179 55 / 0.5);
+}
+[class~="text-[#670201]/40"],
+[class~="text-[#670201]/50"],
+[class~="text-[#670201]/60"],
+[class~="text-[#670201]/80"] {
+  color: rgb(238 179 55 / 0.7);
+}
+[class~="from-[#670201]"] {
+  --tw-gradient-from: #8f2418 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(143 36 24 / 0) var(--tw-gradient-to-position);
+}
+[class~="to-[#a00404]"] {
+  --tw-gradient-to: #b73720 var(--tw-gradient-to-position);
+}
+[class~="via-[#670201]/40"] {
+  --tw-gradient-via: rgb(183 55 32 / 0.4) var(--tw-gradient-via-position);
+}
+[class~="shadow-[#670201]/10"],
+[class~="shadow-[#670201]/30"],
+[class~="shadow-[#670201]/50"] {
+  --tw-shadow-color: rgba(143, 36, 24, 0.4);
+}
+
+/* Soften generic gray text toward the warm paper tone. */
+[class~="text-gray-400"] { color: rgb(201 180 147 / 0.85); }
+[class~="text-gray-500"] { color: rgb(180 158 120 / 0.7); }
+[class~="text-gray-600"] { color: rgb(138 106 74 / 0.6); }
+[class~="text-amber-100"],
+[class~="text-amber-100/80"],
+[class~="text-amber-100/90"] { color: #fff1cf; }
+[class~="text-amber-200"],
+[class~="text-amber-200/60"],
+[class~="text-amber-200/80"],
+[class~="text-amber-200/90"] { color: #f6ca62; }
+[class~="text-amber-300"],
+[class~="text-amber-300/60"],
+[class~="text-amber-300/70"],
+[class~="text-amber-300/80"],
+[class~="text-amber-400"] { color: #eeb337; }
+[class~="bg-amber-400/10"],
+[class~="bg-amber-400/20"],
+[class~="bg-amber-500/10"] { background-color: rgb(238 179 55 / 0.12); }
+[class~="border-amber-400/30"],
+[class~="border-amber-500/20"],
+[class~="border-amber-500/25"] { border-color: rgb(238 179 55 / 0.35); }
+[class~="bg-black/20"],
+[class~="bg-black/25"],
+[class~="bg-black/30"],
+[class~="bg-black/40"],
+[class~="bg-black/60"] { background-color: rgb(13 8 7 / 0.55); }
+[class~="border-white/5"],
+[class~="border-white/10"] { border-color: rgb(238 179 55 / 0.12); }
+[class~="bg-white/5"] { background-color: rgb(238 179 55 / 0.06); }
+[class~="text-red-300"],
+[class~="text-red-400"] { color: #f2a06b; }
+[class~="bg-red-500/10"] { background-color: rgb(183 55 32 / 0.14); }
+[class~="border-red-500/20"] { border-color: rgb(183 55 32 / 0.3); }
+[class~="bg-emerald-500/10"] { background-color: rgb(238 179 55 / 0.12); }
+[class~="border-emerald-500/20"] { border-color: rgb(238 179 55 / 0.3); }
+
+/* Page transition animations */
+@keyframes talisman-fall {
+  0% { transform: translate(-50%, -100vh) rotate(-3deg); opacity: 0; }
+  12% { opacity: 1; }
+  75% { transform: translate(-50%, 42vh) rotate(2deg); opacity: 1; }
+  100% { transform: translate(-50%, 48vh) rotate(0deg) scale(0.7); opacity: 0; }
+}
+.talisman-fall {
+  will-change: transform, opacity;
+  animation: talisman-fall 0.85s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+
+@keyframes talisman-burn-line {
+  0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  15% { opacity: 1; }
+  80% { opacity: 0.8; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(1); }
+}
+.talisman-burn-line {
+  will-change: opacity, transform;
+  animation: talisman-burn-line 0.85s ease-out forwards;
+}
+
+@keyframes talisman-glow-pulse {
+  0% { opacity: 0; }
+  35% { opacity: 0.35; }
+  100% { opacity: 0; }
+}
+.talisman-glow {
+  background: radial-gradient(ellipse at 50% 45%, rgba(255,180,60,0.18) 0%, rgba(200,74,36,0.1) 35%, transparent 65%);
+  animation: talisman-glow-pulse 0.85s ease-in-out forwards;
+}
+
+@keyframes talisman-ember-flicker {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  25% { opacity: 1; transform: translate(1px, -3px) scale(1); }
+  100% { transform: translate(-1px, -14px) scale(0.3); opacity: 0; }
+}
+.talisman-ember {
+  will-change: transform, opacity;
+  animation: talisman-ember-flicker 0.7s ease-out forwards;
+}
+
+@keyframes talisman-sweep-veil {
+  0% { transform: translateX(-100%); opacity: 0; }
+  45% { opacity: 0.4; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+.talisman-sweep-veil {
+  will-change: transform, opacity;
+  background: linear-gradient(90deg, transparent 0%, rgba(40,20,12,0.35) 45%, rgba(80,40,20,0.4) 50%, rgba(40,20,12,0.35) 55%, transparent 100%);
+  animation: talisman-sweep-veil 0.45s ease-in-out forwards;
+}
+
+/* Hero visual restorations */
+@keyframes seal-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-seal-rotate {
+  animation: seal-rotate 22s linear infinite;
+}
+
+@keyframes silk-wave {
+  0%, 100% { transform: translateX(-50%); }
+  50% { transform: translateX(-54%); }
+}
+.animate-silk-wave {
+  animation: silk-wave 7s ease-in-out infinite;
+}
+
+.hero-grain {
+  background-image:
+    radial-gradient(ellipse at 18% 22%, rgba(255,220,164,0.22) 0 0.8px, transparent 1.6px),
+    radial-gradient(ellipse at 73% 68%, rgba(68,12,8,0.22) 0 0.7px, transparent 1.5px),
+    repeating-linear-gradient(92deg, transparent 0, transparent 5px, rgba(255,221,171,0.12) 5.5px, transparent 6px),
+    repeating-linear-gradient(3deg, transparent 0, transparent 8px, rgba(48,12,8,0.1) 8.5px, transparent 9px);
+  background-size: 17px 19px, 23px 21px, 13px 100%, 100% 17px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(13, 8, 7, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(183, 55, 32, 0.55);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(238, 179, 55, 0.75);
+}
